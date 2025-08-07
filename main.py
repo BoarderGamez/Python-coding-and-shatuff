@@ -3,5 +3,6 @@ from tkinter import *
 root = Tk()
 #Var
 PlaceID = None
-TitlePg1 = Label(root,font = "Arial",compound = CENTER)
+# Compound Interest
+TitlePg1 = Label(root,font = "Arial",compound = CENTER, text = f"Weather in {PlaceID}.")
 root.mainloop()
