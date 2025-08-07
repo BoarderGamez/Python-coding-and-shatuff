@@ -1,0 +1,16 @@
+{
+  "name": "Python GUI Dev",
+  "features": {
+    "desktop-lite": {
+      "installVNC": true,
+      "installWeb": true
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
