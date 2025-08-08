@@ -1,35 +1,74 @@
 import streamlit as st
-import os
+import random
 
-# Define the absolute paths to images
-images = [
-    os.path.abspath('/workspaces/Python-coding-and-shatuff/Screenshot 2025-08-08 192313.png'),
-    os.path.abspath('/workspaces/Python-coding-and-shatuff/Unbenannt.png'),
-]
+st.set_page_config(page_title="main2", page_icon="🌤️", layout="centered")
 
-# Set up a session state to keep track of the image index
-if 'image_index' not in st.session_state:
-    st.session_state.image_index = 0
+# 🎨 Styling
+st.markdown("""
+    <style>
+        .main {background-color: #2c2c2c;}
+        h1, h2, p {color: white;}
+        .stButton>button {background-color: #ff69b4; color: white;}
+    </style>
+""", unsafe_allow_html=True)
 
-# Function to navigate images
-def next_image():
-    st.session_state.image_index = (st.session_state.image_index + 1) % len(images)
+# 🏷️ Title
+st.markdown("<h1 style='text-align: center;'>main2</h1>", unsafe_allow_html=True)
 
-def previous_image():
-    st.session_state.image_index = (st.session_state.image_index - 1) % len(images)
+# 🌍 Location + Temperature Info
+def get_goofy_temp():
+    temp = random.randint(-10, 45)
+    moods = [
+        "Spicy Lava Mode 🌋", "Penguin-Approved Chill 🐧", "Sweatocalypse 🔥",
+        "Mild Salsa Breeze 🌶️", "Cloudy with a Chance of Chaos ☁️🎲",
+        "Too Hot for Logic 🧠💥", "Weather Sponsored by Ice Cream 🍦",
+        "Perfect for Lizard Sunbathing 🦎", "Rain Dance Required 💃🌧️"
+    ]
+    return f"{temp}° — {random.choice(moods)}"
 
-# Display the current image
-try:
-    st.image(images[st.session_state.image_index], caption=f"Image {st.session_state.image_index + 1}", use_column_width=True)
-except Exception as e:
-    st.error(f"An error occurred while loading the image: {e}")
+def get_random_location():
+    places = [
+        "Banana Fjord", "Quantumville", "Cloudtopia", "Rainburg", "Sizzle City",
+        "Fogtown", "Windopolis", "Sunburnt Sands", "Stormsylvania", "Mildville"
+    ]
+    return random.choice(places)
 
-# Image navigation
-col1, col2, col3 = st.columns([1, 2, 1])
-with col1:
-    if st.button('Previous'):
-        previous_image()
+def get_guess_message():
+    guesses = [
+        "The temperature is... I think? 🤷", "Probably accurate-ish 🌡️",
+        "Don't quote me on this 🫣", "Thermometer said maybe 🧪",
+        "Feels like... something 🔮", "AI-generated weather vibes ✨"
+    ]
+    return random.choice(guesses)
 
-with col3:
-    if st.button('Next'):
-        next_image()
+# 🔄 Weather Update
+if st.button("🔄 Refresh Weather"):
+    st.subheader(f"Location: {get_random_location()}")
+    st.write(get_goofy_temp())
+    st.caption(get_guess_message())
+
+# 📦 Output Actions
+st.markdown("---")
+st.subheader("🎮 Weather Actions")
+
+if st.button("Get AI Forecast 💡"):
+    st.success("AI says: Buy sunglasses and a llama 🦙")
+
+if st.button("Unlock Detailed Radar 💰"):
+    st.warning("Radar unlocked! You owe us €4.99 💸")
+
+if st.button("Play Weather Jackpot 🎰"):
+    outcome = random.choice([
+        "🌈 Jackpot! Free rainbows!",
+        "☀️ You lost. Try again!",
+        "🌪️ Tornado loot box unlocked!"
+    ])
+    st.info(outcome)
+
+if st.button("Get Likes for Rain 👍"):
+    likes = random.randint(1, 9999)
+    st.success(f"You got {likes} likes for rain! 👍")
+
+# 🧭 Navigation Icons
+st.markdown("---")
+st.markdown("<h2 style='text-align: center;'>🏠 📊 ❓</h2>", unsafe_allow_html=True)
