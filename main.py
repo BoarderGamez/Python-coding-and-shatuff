@@ -1,12 +1,12 @@
 from tkinter import *
 import random
-
+# AMAZING CODES WOOOOOHOOO MAKING MY WAY DOWN TOWN WALKING FAST STRANGERS PASSED AND IM HOME NOW
 root = Tk()
 root.title("AI Weather")
 root.geometry("400x600")
 root.configure(bg="#2c2c2c")
 
-# 🧠 Title
+# Title
 Label(root, text="AI Weather", font=("Comic Sans MS", 24, "bold"), fg="white", bg="#2c2c2c").pack(pady=10)
 
 # 🌍 Location + Temperature Info
@@ -100,5 +100,5 @@ nav_frame = Frame(root, bg="#2c2c2c")
 nav_frame.pack(side=BOTTOM, pady=20)
 for icon in ["🏠", "📊", "❓"]:
     Label(nav_frame, text=icon, font=("Arial", 20), fg="gray", bg="#2c2c2c", padx=20).pack(side=LEFT)
-
+print("AI Weather Apfp is rIf you fly awayunning...")
 root.mainloop()
