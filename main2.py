@@ -1,9 +1,10 @@
 import streamlit as st
+import os
 
-# List of image file paths
+# Define the absolute paths to images
 images = [
-    '/workspaces/Python-coding-and-shatuff/Screenshot 2025-08-08 192313.png',
-    '/workspaces/Python-coding-and-shatuff/Unbenannt.png',
+    os.path.abspath('/workspaces/Python-coding-and-shatuff/Screenshot 2025-08-08 192313.png'),
+    os.path.abspath('/workspaces/Python-coding-and-shatuff/Unbenannt.png'),
 ]
 
 # Set up a session state to keep track of the image index
@@ -18,10 +19,13 @@ def previous_image():
     st.session_state.image_index = (st.session_state.image_index - 1) % len(images)
 
 # Display the current image
-st.image(images[st.session_state.image_index])
+try:
+    st.image(images[st.session_state.image_index], caption=f"Image {st.session_state.image_index + 1}", use_column_width=True)
+except Exception as e:
+    st.error(f"An error occurred while loading the image: {e}")
 
 # Image navigation
-col1, col2, col3 = st.columns([1,2,1])
+col1, col2, col3 = st.columns([1, 2, 1])
 with col1:
     if st.button('Previous'):
         previous_image()
