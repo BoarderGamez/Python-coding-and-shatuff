@@ -1,77 +1,41 @@
 import streamlit as st
-import random
+from datetime import datetime
 
-st.set_page_config(page_title="AI Weather", layout="centered", page_icon="🌦️")
+# Title and Header
+st.set_page_config(page_title="WingCast", layout="centered")
+st.title("✈️ WingCast: Weather from the Aircraft Wing")
+st.subheader("Quite Breezy, H:50°, L:30°")
 
-st.title("AI Weather")
-st.markdown("#### Making my way downtown... 🌆")
+# Images (placeholder URLs or local files)
+st.image("https://via.placeholder.com/300x200?text=Person+on+Wing", caption="Live from the Wing")
+st.image("https://via.placeholder.com/300x200?text=Aircraft+Wing+View", caption="View from Above")
 
-# 🌍 Location + Temperature Info
-def get_goofy_temp():
-    temp = random.randint(-10, 45)
-    moods = [
-        "Spicy Lava Mode 🌋",
-        "Penguin-Approved Chill 🐧",
-        "Sweatocalypse 🔥",
-        "Mild Salsa Breeze 🌶️",
-        "Cloudy with a Chance of Chaos ☁️🎲",
-        "Too Hot for Logic 🧠💥",
-        "Weather Sponsored by Ice Cream 🍦",
-        "Perfect for Lizard Sunbathing 🦎",
-        "Rain Dance Required 💃🌧️"
-    ]
-    return f"{temp}° — {random.choice(moods)}"
+# Hourly Forecast
+st.markdown("### 🌡️ Hourly Forecast")
+current_time = datetime.now().strftime("%I:%M %p")
+st.write(f"Current Time: {current_time}")
+st.write("12 AM: 50°F")
+st.write("Now: -50°F ❄️ (Definitely not accurate)")
 
-def get_random_location():
-    places = [
-        "Banana Fjord", "Quantumville", "Cloudtopia", "Rainburg", "Sizzle City",
-        "Fogtown", "Windopolis", "Sunburnt Sands", "Stormsylvania", "Mildville"
-    ]
-    return random.choice(places)
+# Weekly Forecast (mocked)
+st.markdown("### 📅 Weekly Forecast")
+forecast = {
+    "Mon": "🌧️ 45°F",
+    "Tue": "☀️ 60°F",
+    "Wed": "🌬️ 30°F",
+    "Thu": "🌩️ 50°F",
+    "Fri": "❄️ -10°F",
+}
+for day, temp in forecast.items():
+    st.write(f"{day}: {temp}")
 
-def get_guess_message():
-    guesses = [
-        "The temperature is... I think? 🤷",
-        "Probably accurate-ish 🌡️",
-        "Don't quote me on this 🫣",
-        "Thermometer said maybe 🧪",
-        "Feels like... something 🔮",
-        "AI-generated weather vibes ✨"
-    ]
-    return random.choice(guesses)
+# Microtransactions Section
+st.markdown("### 💸 Microtransactions")
+st.image("https://via.placeholder.com/50x50?text=🔒", caption="Unlock Premium Forecast")
+st.image("https://via.placeholder.com/50x50?text=EA", caption="EA Weather Pack")
+st.image("https://via.placeholder.com/50x50?text=₿", caption="Bitcoin Weather Boost - $500")
 
-# Display Weather Info
-location = get_random_location()
-temperature = get_goofy_temp()
-guess = get_guess_message()
-
-st.markdown(f"**Location:** {location}")
-st.markdown(f"**Temperature:** {temperature}")
-st.markdown(f"**Guess:** {guess}")
-
-# 📦 Output Section
+# Footer
 st.markdown("---")
-st.subheader("AI Weather Actions")
-
-if st.button("Get AI Forecast 💡"):
-    st.success("AI says: Buy sunglasses and a llama 🦙")
-
-if st.button("Unlock Detailed Radar 💰"):
-    st.warning("Radar unlocked! You owe us €4.99 💸")
-
-if st.button("Play Weather Jackpot 🎰"):
-    outcome = random.choice([
-        "🌈 Jackpot! Free rainbows!",
-        "☀️ You lost. Try again!",
-        "🌪️ Tornado loot box unlocked!"
-    ])
-    st.info(outcome)
-
-if st.button("Get Likes for Rain 👍"):
-    likes = random.randint(1, 9999)
-    st.success(f"You got {likes} likes for rain! 👍")
-
-# 🧭 Navigation Icons
-st.markdown("---")
-st.markdown("🏠 📊 ❓")
+st.caption("This app is a parody. Do not trust it for actual weather updates.")
 
